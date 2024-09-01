@@ -1,9 +1,9 @@
 import express from "express";
 
+import songRoutes from "@/routes/song.route";
+
 const api = express.Router();
 
-api.use("/test", (req, res, next) => {
-  return res.json({ message: "Hello World" });
-});
+api.use("/songs", songRoutes);
 
 export default api;

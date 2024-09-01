@@ -2,14 +2,14 @@ import { cipher, util } from "node-forge";
 
 // create image links for different resolutions
 export const createImageLinks = (link: string) => {
-  if (!link) return false;
+  if (!link) return [];
 
   const qualities = ["50x50", "150x150", "500x500"];
 
   return (
     qualities.map((quality) => ({
       quality,
-      link: link.includes("150x150")
+      url: link.includes("150x150")
         ? link.replace("150x150", quality)
         : link.replace("50x50", quality),
     })) || false
@@ -46,7 +46,7 @@ export const createDownloadLinks = (encryptedMediaUrl: string) => {
   const links =
     qualities.map((quality) => ({
       quality: quality.bitrate,
-      link: decryptedLink.replace("_96", quality.id),
+      url: decryptedLink.replace("_96", quality.id),
     })) || false;
 
   return links;

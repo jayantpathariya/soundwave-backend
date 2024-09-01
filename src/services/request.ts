@@ -15,11 +15,11 @@ interface ApiParams {
   [key: string]: any;
 }
 
-const api = async (
+const request = async <Response>(
   endpoint: string,
   params?: ApiParams,
   isVersion4: boolean = true
-): Promise<AxiosResponse<any>> => {
+): Promise<AxiosResponse<Response>> => {
   try {
     const v4 = isVersion4 ? { api_version: 4 } : undefined;
 
@@ -39,4 +39,4 @@ const api = async (
   }
 };
 
-export default api;
+export default request;
