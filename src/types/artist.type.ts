@@ -5,7 +5,7 @@ export type ArtistAPIResponse = {
   name: string;
   role: string;
   image: string;
-  type: "artist";
+  type: string;
   perma_url: string;
 };
 
@@ -14,6 +14,6 @@ export type Artist = {
   name: string;
   role: string;
   image: DownloadLink[];
-  type: "artist";
+  type: string;
   url: string;
 };
