@@ -4,7 +4,7 @@ import request from "@/services/request";
 import { PlaylistAPIResponse } from "@/types/playlist.type";
 import { Request, Response } from "express";
 
-export const getPlaylist = async (req: Request, res: Response) => {
+export const getPlaylistById = async (req: Request, res: Response) => {
   const { playlistId } = req.params;
   const { limit, page } = req.query;
   try {
