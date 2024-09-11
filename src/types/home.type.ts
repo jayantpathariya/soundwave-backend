@@ -230,41 +230,9 @@ export type HomeItem = {
   explicitContent: boolean;
 };
 
-export type Home = [
-  {
-    title: string;
-    items: HomeItem[];
-  },
-  {
-    title: string;
-    items: HomeItem[];
-  },
-  {
-    title: string;
-    items: HomeItem[];
-  },
-  //  {
-  //   title: string;
-  //   items: HomeItem[];
-  // };
-  {
-    title: string;
-    items: HomeItem[];
-  },
-  {
-    title: string;
-    items: HomeItem[];
-  },
-  {
-    title: string;
-    items: HomeItem[];
-  },
-  {
-    title: string;
-    items: HomeItem[];
-  },
-  {
-    title: string;
-    items: HomeItem[];
-  }
-];
+export type Home = {
+  id: string;
+  key: string;
+  title: string;
+  items: HomeItem[];
+}[];

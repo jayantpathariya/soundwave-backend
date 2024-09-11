@@ -92,20 +92,20 @@ export const formatHome = (homeData: HomeAPIResponse): Home => {
     };
   });
 
-  const artistRecos: HomeItem[] = homeData.artist_recos.map((item) => {
-    return {
-      id: item.id,
-      title: item.title,
-      description: item.subtitle,
-      type: item.type,
-      image: createImageLinks(item.image),
-      url: item.perma_url,
-      year: null,
-      playCount: null,
-      language: null,
-      explicitContent: item.explicit_content === "1",
-    };
-  });
+  // const artistRecos: HomeItem[] = homeData.artist_recos.map((item) => {
+  //   return {
+  //     id: item.id,
+  //     title: item.title,
+  //     description: item.subtitle,
+  //     type: item.type,
+  //     image: createImageLinks(item.image),
+  //     url: item.perma_url,
+  //     year: null,
+  //     playCount: null,
+  //     language: null,
+  //     explicitContent: item.explicit_content === "1",
+  //   };
+  // });
 
   const tagMixes: HomeItem[] = homeData.tag_mixes.map((item) => {
     return {
@@ -122,48 +122,69 @@ export const formatHome = (homeData: HomeAPIResponse): Home => {
     };
   });
 
-  const cityMod: HomeItem[] = homeData.city_mod.map((item) => {
-    return {
-      id: item.id,
-      title: item.title,
-      description: item.subtitle,
-      type: item.type,
-      image: createImageLinks(item.image),
-      url: item.perma_url,
-      year: null,
-      playCount: null,
-      language: null,
-      explicitContent: item.explicit_content === "1",
-    };
-  });
+  // const cityMod: HomeItem[] = homeData.city_mod.map((item) => {
+  //   return {
+  //     id: item.id,
+  //     title: item.title,
+  //     description: item.subtitle,
+  //     type: item.type,
+  //     image: createImageLinks(item.image),
+  //     url: item.perma_url,
+  //     year: null,
+  //     playCount: null,
+  //     language: null,
+  //     explicitContent: item.explicit_content === "1",
+  //   };
+  // });
 
   return [
     {
+      id: crypto.randomUUID(),
+      key: "newTrending",
       title: "Trending Now",
       items: newTrending,
     },
     {
+      id: crypto.randomUUID(),
+      key: "charts",
       title: "Top Charts",
       items: charts,
     },
-    // {
-    //   title: "Browse Discover",
-    //   items: browseDiscover,
-    // },
     {
+      id: crypto.randomUUID(),
+      key: "newAlbums",
       title: "New Releases",
       items: newAlbums,
     },
     {
+      id: crypto.randomUUID(),
+      key: "topPlaylists",
       title: "Editors Picks",
       items: topPlaylists,
     },
     {
+      id: crypto.randomUUID(),
+      key: "radio",
       title: "Radio Stations",
       items: radio,
     },
-    { title: "Recommended Artist Stations", items: artistRecos },
-    { title: "What's Hot Now in Your City", items: cityMod },
-    { title: "Pick Your Mood", items: tagMixes },
+    // {
+    //   id: crypto.randomUUID(),
+    //   key: "artistRecos",
+    //   title: "Recommended Artist Stations",
+    //   items: artistRecos,
+    // },
+    // {
+    //   id: crypto.randomUUID(),
+    //   key: "cityMod",
+    //   title: "Hot in Your City",
+    //   items: cityMod,
+    // },
+    {
+      id: crypto.randomUUID(),
+      key: "tagMixes",
+      title: "Pick Your Mood",
+      items: tagMixes,
+    },
   ];
 };
