@@ -1,4 +1,6 @@
-import { ArtistAPIResponse } from "./artist.type";
+import { Artist, ArtistAPIResponse } from "./artist.type";
+import { DownloadLink } from "./common.type";
+import { Song, SongAPIResponse } from "./song.type";
 
 export type AlbumAPIResponse = {
   id: string;
@@ -14,7 +16,7 @@ export type AlbumAPIResponse = {
   explicit_content: string;
   list_count: string;
   list_type: string;
-  list: string;
+  list: SongAPIResponse[];
   more_info: {
     release_date: string;
     song_count: string;
@@ -24,4 +26,24 @@ export type AlbumAPIResponse = {
       artists: ArtistAPIResponse[];
     };
   };
+};
+
+export type Album = {
+  id: string;
+  title: string;
+  description: string;
+  year: number | null;
+  type: string;
+  playCount: number | null;
+  language: string;
+  explicitContent: boolean;
+  artists: {
+    primary: Artist[];
+    featured: Artist[];
+    all: Artist[];
+  };
+  songCount: number | null;
+  url: string;
+  image: DownloadLink[];
+  songs: Song[];
 };
