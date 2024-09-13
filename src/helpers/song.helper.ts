@@ -1,6 +1,11 @@
+import { formatArtistMap } from "@/helpers/artist.helper";
 import { createDownloadLinks, createImageLinks } from "@/lib/utils";
-import { Song, SongAPIResponse } from "@/types/song.type";
-import { formatArtistMap } from "./artist.helper";
+import {
+  LyricsAPIResponse,
+  Song,
+  SongAPIResponse,
+  SongLyrics,
+} from "@/types/song.type";
 
 export const formatSong = (song: SongAPIResponse): Song => {
   return {
@@ -31,5 +36,13 @@ export const formatSong = (song: SongAPIResponse): Song => {
     },
     image: createImageLinks(song.image),
     downloadUrl: createDownloadLinks(song.more_info?.encrypted_media_url),
+  };
+};
+
+export const formatLyrics = (lyrics: LyricsAPIResponse): SongLyrics => {
+  return {
+    lyrics: lyrics.lyrics,
+    lyrics_copyright: lyrics.lyrics_copyright,
+    snippet: lyrics.snippet,
   };
 };

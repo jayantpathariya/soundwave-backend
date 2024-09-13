@@ -57,6 +57,12 @@ export type SongAPIResponse = {
   };
 };
 
+export type LyricsAPIResponse = {
+  lyrics: string;
+  lyrics_copyright: string;
+  snippet: string;
+};
+
 export type Song = {
   id: string;
   title: string;
@@ -85,6 +91,12 @@ export type Song = {
   };
   image: DownloadLink[];
   downloadUrl: DownloadLink[];
+};
+
+export type SongLyrics = {
+  lyrics: string;
+  lyrics_copyright: string;
+  snippet: string;
 };
 
 export type GetSongByIdResponse = {
