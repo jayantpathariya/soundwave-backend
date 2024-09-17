@@ -1,5 +1,12 @@
 import { createImageLinks } from "@/lib/utils";
-import { Search, SearchAPIResponse, SearchResult } from "@/types/search.type";
+import {
+  Search,
+  SearchAlbum,
+  SearchAlbumAPIResponse,
+  SearchAPIResponse,
+  SearchResult,
+} from "@/types/search.type";
+import { formatArtistMap } from "./artist.helper";
 
 export const formatSearch = (search: SearchAPIResponse): Search => {
   const topQuery = {
@@ -98,4 +105,34 @@ export const formatSearch = (search: SearchAPIResponse): Search => {
     .flatMap((entry) => entry.data ?? []);
 
   return sortedSearch as Search;
+};
+
+export const formatSearchAlbum = (
+  album: SearchAlbumAPIResponse
+): SearchAlbum => {
+  const result = {
+    total: album.total,
+    start: album.start,
+    results: album.results.map((item) => ({
+      id: item.id,
+      title: item.title,
+      description: item.header_desc,
+      url: item.perma_url,
+      year: item.year ? +item.year : null,
+      type: item.type,
+      playCount: item.play_count ? +item.play_count : null,
+      language: item.language,
+      explicitContent: item.explicit_content === "1",
+      artists: {
+        primary:
+          item.more_info?.artistMap?.primary_artists?.map(formatArtistMap),
+        featured:
+          item.more_info?.artistMap?.featured_artists?.map(formatArtistMap),
+        all: item.more_info?.artistMap?.artists?.map(formatArtistMap),
+      },
+      image: createImageLinks(item.image),
+    })),
+  };
+
+  return result;
 };

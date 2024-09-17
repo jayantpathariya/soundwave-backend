@@ -1,5 +1,6 @@
 import { DownloadLink } from "@/types/common.type";
 import { Song, SongAPIResponse } from "@/types/song.type";
+import { Artist, ArtistAPIResponse } from "./artist.type";
 
 export type SearchAPIResponse = {
   albums: {
@@ -197,4 +198,58 @@ export type SearchSong = {
   total: number;
   start: number;
   result: Song[];
+};
+
+export type SearchAlbumAPIResponse = {
+  total: number;
+  start: number;
+  results: {
+    id: string;
+    title: string;
+    subtitle: string;
+    header_desc: string;
+    type: string;
+    perma_url: string;
+    image: string;
+    language: string;
+    year: string;
+    play_count: string;
+    explicit_content: string;
+    list_count: string;
+    list_type: string;
+    list: SongAPIResponse[];
+    more_info: {
+      query: string;
+      text: string;
+      music: string;
+      song_count: string;
+      artistMap: {
+        primary_artists: ArtistAPIResponse[];
+        featured_artists: ArtistAPIResponse[];
+        artists: ArtistAPIResponse[];
+      };
+    };
+  }[];
+};
+
+export type SearchAlbum = {
+  total: number;
+  start: number;
+  results: {
+    id: string;
+    title: string;
+    description: string;
+    year: number | null;
+    type: string;
+    playCount: number | null;
+    language: string;
+    explicitContent: boolean;
+    artists: {
+      primary: Artist[];
+      featured: Artist[];
+      all: Artist[];
+    };
+    url: string;
+    image: DownloadLink[];
+  }[];
 };
