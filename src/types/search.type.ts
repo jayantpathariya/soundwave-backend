@@ -253,3 +253,34 @@ export type SearchAlbum = {
     image: DownloadLink[];
   }[];
 };
+
+export type SearchArtistAPIResponse = {
+  total: number;
+  start: number;
+  results: {
+    id: string;
+    name: string;
+    ctr: number;
+    entity: number;
+    image: string;
+    role: string;
+    perma_url: string;
+    type: string;
+    mini_obj: boolean;
+    isRadioPresent: boolean;
+    is_followed: boolean;
+  }[];
+};
+
+export type SearchArtist = {
+  total: number;
+  start: number;
+  results: {
+    id: string;
+    name: string;
+    role: string;
+    type: string;
+    image: DownloadLink[];
+    url: string;
+  }[];
+};
