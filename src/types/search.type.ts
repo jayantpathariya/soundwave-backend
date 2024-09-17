@@ -1,6 +1,4 @@
-// DownloadLink TypeScript definition (assuming based on its name)
-
-import { DownloadLink } from "./common.type";
+import { DownloadLink } from "@/types/common.type";
 
 export type SearchAPIResponse = {
   albums: {
@@ -121,12 +119,7 @@ export type SearchAPIResponse = {
   };
 };
 
-type SearchResponse<T> = {
-  data: T[];
-  position: number;
-};
-
-type AlbumModel = {
+type SearchAlbum = {
   id: string;
   title: string;
   image: DownloadLink[];
@@ -139,7 +132,7 @@ type AlbumModel = {
   songIds: string;
 };
 
-type SongModel = {
+type SearchSong = {
   id: string;
   title: string;
   image: DownloadLink[];
@@ -152,7 +145,7 @@ type SongModel = {
   language: string;
 };
 
-type ArtistModel = {
+type SearchArtist = {
   id: string;
   title: string;
   image: DownloadLink[];
@@ -161,7 +154,7 @@ type ArtistModel = {
   position: number;
 };
 
-type PlaylistModel = {
+type SearchPlaylist = {
   id: string;
   title: string;
   image: DownloadLink[];
@@ -171,7 +164,7 @@ type PlaylistModel = {
   description: string;
 };
 
-type TopQueryModel = {
+type SearchTopQuery = {
   id: string;
   title: string;
   image: DownloadLink[];
@@ -184,10 +177,11 @@ type TopQueryModel = {
   language: string;
 };
 
-export type Search = {
-  albums: SearchResponse<AlbumModel>;
-  songs: SearchResponse<SongModel>;
-  artists: SearchResponse<ArtistModel>;
-  playlists: SearchResponse<PlaylistModel>;
-  topQuery: SearchResponse<TopQueryModel>;
-};
+export type SearchResult =
+  | SearchAlbum
+  | SearchSong
+  | SearchArtist
+  | SearchPlaylist
+  | SearchTopQuery;
+
+export type Search = SearchResult[];
