@@ -4,6 +4,8 @@ import {
   SearchAlbum,
   SearchAlbumAPIResponse,
   SearchAPIResponse,
+  SearchPlaylist,
+  SearchPlaylistAPIResponse,
   SearchResult,
 } from "@/types/search.type";
 import { formatArtistMap } from "./artist.helper";
@@ -111,8 +113,8 @@ export const formatSearchAlbum = (
   album: SearchAlbumAPIResponse
 ): SearchAlbum => {
   const result = {
-    total: album.total,
-    start: album.start,
+    total: +album.total,
+    start: +album.start,
     results: album.results.map((item) => ({
       id: item.id,
       title: item.title,
@@ -131,6 +133,27 @@ export const formatSearchAlbum = (
         all: item.more_info?.artistMap?.artists?.map(formatArtistMap),
       },
       image: createImageLinks(item.image),
+    })),
+  };
+
+  return result;
+};
+
+export const formatSearchPlaylist = (
+  playlist: SearchPlaylistAPIResponse
+): SearchPlaylist => {
+  const result = {
+    total: +playlist.total,
+    start: +playlist.start,
+    results: playlist.results.map((item) => ({
+      id: item.id,
+      title: item.title,
+      type: item.type,
+      image: createImageLinks(item.image),
+      url: item.perma_url,
+      songCount: item.more_info.song_count ? +item.more_info.song_count : null,
+      language: item.more_info?.language,
+      explicitContent: item.explicit_content === "1",
     })),
   };
 

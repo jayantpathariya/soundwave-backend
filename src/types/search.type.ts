@@ -284,3 +284,48 @@ export type SearchArtist = {
     url: string;
   }[];
 };
+
+export type SearchPlaylistAPIResponse = {
+  total: number;
+  start: number;
+  results: {
+    id: string;
+    title: string;
+    subtitle: string;
+    type: string;
+    image: string;
+    perma_url: string;
+    more_info: {
+      uid: string;
+      firstname: string;
+      artist_name: any;
+      entity_type: string;
+      entity_sub_type: string;
+      video_available: boolean;
+      is_dolby_content: boolean;
+      sub_types: any;
+      images: any;
+      lastname: string;
+      song_count: string;
+      language: string;
+    };
+    explicit_content: string;
+    mini_obj: boolean;
+    numsongs: string;
+  }[];
+};
+
+export type SearchPlaylist = {
+  total: number;
+  start: number;
+  results: {
+    id: string;
+    title: string;
+    type: string;
+    image: DownloadLink[];
+    url: string;
+    songCount: number | null;
+    language: string;
+    explicitContent: boolean;
+  }[];
+};
