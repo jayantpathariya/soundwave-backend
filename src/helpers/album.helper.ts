@@ -1,7 +1,7 @@
+import { formatArtistMap } from "@/helpers//artist.helper";
+import { formatSong } from "@/helpers//song.helper";
 import { createImageLinks } from "@/lib/utils";
 import { Album, AlbumAPIResponse } from "@/types/album.type";
-import { formatArtistMap } from "./artist.helper";
-import { formatSong } from "./song.helper";
 
 export const formatAlbum = (album: AlbumAPIResponse): Album => {
   return {
@@ -23,6 +23,6 @@ export const formatAlbum = (album: AlbumAPIResponse): Album => {
       all: album.more_info.artistMap.artists.map(formatArtistMap),
     },
     image: createImageLinks(album.image),
-    songs: album.list.map(formatSong),
+    songs: (album.list && album.list?.map(formatSong)) || null,
   };
 };

@@ -1,6 +1,6 @@
-import { Artist, ArtistAPIResponse } from "./artist.type";
-import { DownloadLink } from "./common.type";
-import { Song, SongAPIResponse } from "./song.type";
+import { ArtistMap, ArtistMapAPIResponse } from "@/types/artist.type";
+import { DownloadLink } from "@/types/common.type";
+import { Song, SongAPIResponse } from "@/types/song.type";
 
 export type AlbumAPIResponse = {
   id: string;
@@ -21,9 +21,9 @@ export type AlbumAPIResponse = {
     release_date: string;
     song_count: string;
     artistMap: {
-      primary_artists: ArtistAPIResponse[];
-      featured_artists: ArtistAPIResponse[];
-      artists: ArtistAPIResponse[];
+      primary_artists: ArtistMapAPIResponse[];
+      featured_artists: ArtistMapAPIResponse[];
+      artists: ArtistMapAPIResponse[];
     };
   };
 };
@@ -38,9 +38,9 @@ export type Album = {
   language: string;
   explicitContent: boolean;
   artists: {
-    primary: Artist[];
-    featured: Artist[];
-    all: Artist[];
+    primary: ArtistMap[];
+    featured: ArtistMap[];
+    all: ArtistMap[];
   };
   songCount: number | null;
   url: string;

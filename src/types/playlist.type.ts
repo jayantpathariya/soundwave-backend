@@ -1,4 +1,4 @@
-import { Artist } from "./artist.type";
+import { ArtistMap } from "./artist.type";
 import { DownloadLink } from "./common.type";
 import { Song, SongAPIResponse } from "./song.type";
 
@@ -61,5 +61,5 @@ export type Playlist = {
   url: string;
   image: DownloadLink[];
   songs: Song[];
-  artists: Artist[];
+  artists: ArtistMap[];
 };

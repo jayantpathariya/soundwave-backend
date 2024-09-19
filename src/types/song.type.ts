@@ -1,4 +1,4 @@
-import { Artist, ArtistAPIResponse } from "./artist.type";
+import { ArtistMap, ArtistMapAPIResponse } from "./artist.type";
 import { DownloadLink } from "./common.type";
 
 export type SongAPIResponse = {
@@ -43,9 +43,9 @@ export type SongAPIResponse = {
     starred: string;
     copyright_text: string;
     artistMap: {
-      primary_artists: ArtistAPIResponse[];
-      featured_artists: ArtistAPIResponse[];
-      artists: ArtistAPIResponse[];
+      primary_artists: ArtistMapAPIResponse[];
+      featured_artists: ArtistMapAPIResponse[];
+      artists: ArtistMapAPIResponse[];
     };
     release_date: string;
     label_url: string;
@@ -85,9 +85,9 @@ export type Song = {
     url: string;
   };
   artists: {
-    primary: Artist[];
-    featured: Artist[];
-    all: Artist[];
+    primary: ArtistMap[];
+    featured: ArtistMap[];
+    all: ArtistMap[];
   };
   image: DownloadLink[];
   downloadUrl: DownloadLink[];

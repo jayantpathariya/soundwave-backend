@@ -34,5 +34,6 @@ export const config = {
       topArtists: "social.getTopArtists",
     },
     lyrics: "lyrics.getLyrics",
+    trending: "content.getTrending",
   },
 };
