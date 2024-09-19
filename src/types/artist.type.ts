@@ -182,3 +182,27 @@ export type Artist = {
       }[]
     | null;
 };
+
+export type ArtistSongAPIResponse = {
+  artistId: string;
+  name: string;
+  subtitle: string;
+  image: string;
+  follower_count: string;
+  type: string;
+  isVerified: boolean;
+  dominantLanguage: string;
+  dominantType: string;
+  topSongs: {
+    songs: SongAPIResponse[];
+    total: number;
+  };
+};
+
+export type ArtistSongs = {
+  title: string;
+  image: DownloadLink[];
+  type: string;
+  total: number;
+  songs: Song[];
+};

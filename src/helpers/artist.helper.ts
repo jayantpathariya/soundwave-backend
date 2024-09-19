@@ -6,6 +6,8 @@ import {
   ArtistAPIResponse,
   ArtistMap,
   ArtistMapAPIResponse,
+  ArtistSongAPIResponse,
+  ArtistSongs,
 } from "@/types/artist.type";
 
 export const formatArtistMap = (artist: ArtistMapAPIResponse): ArtistMap => {
@@ -65,5 +67,17 @@ export const formatArtist = (artist: ArtistAPIResponse): Artist => {
           ? JSON.parse(similarArtist.similar)
           : null,
       })) || null,
+  };
+};
+
+export const formatArtistSongs = (
+  artist: ArtistSongAPIResponse
+): ArtistSongs => {
+  return {
+    title: artist.name,
+    image: createImageLinks(artist.image),
+    type: artist.type,
+    total: artist.topSongs.total,
+    songs: artist.topSongs.songs.map(formatSong),
   };
 };
